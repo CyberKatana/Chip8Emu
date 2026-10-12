@@ -57,4 +57,6 @@ bool Chip8::LoadROM(const std::string &Path) {
   return true;
 };
 
-void Chip8::OP_00E0() { Display.fil(0); };
+void Chip8::OP_00E0() { Display.fill(0); };
+
+void Chip8::OP_1NNN() { PC = OppCode & 0x0FFFu; };
