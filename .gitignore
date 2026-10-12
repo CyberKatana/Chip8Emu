@@ -2,3 +2,5 @@ a.out
 *.o
 *.out
 chip8
+/CLAUDE.md
+/compile_flags.txt
