@@ -76,3 +76,5 @@ void Chip8::OP_6XKK() {
 };
 
 void Chip8::OP_7XKK() { GetRegisterRef(OppCode) = OppCode & 0x00FFu; }
+
+void Chip8::OP_ANNN() { RegI = OppCode & 0x0FFFu; };
