@@ -1,8 +1,8 @@
 #include "chip8.h"
 #include <cstdint>
-#include <iterator>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 
 const unsigned int START_ADDRESS = 0x200;
 const unsigned int FONTSET_SIZE = 80;
@@ -56,3 +56,5 @@ bool Chip8::LoadROM(const std::string &Path) {
 
   return true;
 };
+
+void Chip8::OP_00E0() { Display.fil(0); };
