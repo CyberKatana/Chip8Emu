@@ -1,10 +1,11 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 #include <string>
 
 class Chip8 {
 public:
+  Chip8();
   bool LoadROM(const std::string &Path);
 
 private:
@@ -18,4 +19,3 @@ private:
   uint16_t Stack[16];
   uint8_t Keypad[16];
 };
-
