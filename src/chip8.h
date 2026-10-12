@@ -17,6 +17,10 @@ public:
   // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1nnn
   void OP_1NNN();
 
+  // LD Vx, byte
+  // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#6xkk
+  void OP_6XKK();
+
 private:
   std::array<int8_t, 4096> Memory{};
   std::array<uint8_t, 64 * 32> Display{};

@@ -60,3 +60,9 @@ bool Chip8::LoadROM(const std::string &Path) {
 void Chip8::OP_00E0() { Display.fill(0); };
 
 void Chip8::OP_1NNN() { PC = OppCode & 0x0FFFu; };
+
+void Chip8::OP_6XKK() {
+  auto RegesterIdx = (OppCode & 0x0F00u) >> 8u;
+  auto Val = OppCode & 0x00FFu;
+  Register[RegesterIdx] = Val;
+};
