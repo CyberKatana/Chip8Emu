@@ -78,3 +78,28 @@ void Chip8::OP_6XKK() {
 void Chip8::OP_7XKK() { GetRegisterRef(OppCode) = OppCode & 0x00FFu; }
 
 void Chip8::OP_ANNN() { RegI = OppCode & 0x0FFFu; };
+
+void Chip8::OP_DXYN() {
+  Register[0xF] = 0;
+
+  std::uint8_t Xpos = ((OppCode & 0x0F00u) >> 8u) % 64;
+  std::uint8_t Ypos = ((OppCode & 0x00F0u) >> 4u) % 32;
+  std::uint8_t SpriteHeight = OppCode & 0x000Fu;
+
+  for (std::uint8_t Row = 0; Row < SpriteHeight; Row++) {
+    std::uint8_t SpriteLine = Memory[RegI + Row];
+    for (std::uint8_t Column = 0; Column < 8; Column++) {
+      std::uint8_t SpritePixel = SpriteLine & (0b10000000 >> Column);
+      std::uint8_t &DisplayPixel = Display[(Ypos + Row) * 64 + (Xpos + Column)];
+
+      if (SpritePixel) {
+        if (DisplayPixel == 0xFF) {
+          // Collision detected
+          Register[0xF] = 1;
+        }
+
+        DisplayPixel ^= 0xFF;
+      }
+    }
+  }
+};

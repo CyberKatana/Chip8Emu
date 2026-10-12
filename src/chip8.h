@@ -33,6 +33,10 @@ public:
   // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#Annn
   void OP_ANNN();
 
+  // DRW Vx, Vy, nibble
+  // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#Dxyn
+  void OP_DXYN();
+
 private:
   std::array<std::uint8_t, 4096> Memory{};
   std::array<std::uint8_t, 64 * 32> Display{};
