@@ -57,6 +57,14 @@ bool Chip8::LoadROM(const std::string &Path) {
   return true;
 };
 
+std::size_t Chip8::GetRegisterIndex(const std::uint16_t Opcode) const {
+  return (Opcode & 0x0F00u) >> 8u;
+};
+
+std::uint8_t &Chip8::GetRegisterRef(const std::uint16_t Opcode) {
+  return Register[GetRegisterIndex(Opcode)];
+};
+
 void Chip8::OP_00E0() { Display.fill(0); };
 
 void Chip8::OP_1NNN() { PC = OppCode & 0x0FFFu; };
@@ -66,3 +74,5 @@ void Chip8::OP_6XKK() {
   auto Val = OppCode & 0x00FFu;
   Register[RegesterIdx] = Val;
 };
+
+void Chip8::OP_7XKK() { GetRegisterRef(OppCode) = OppCode & 0x00FFu; }

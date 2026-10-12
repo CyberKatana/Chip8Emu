@@ -9,6 +9,10 @@ public:
   Chip8();
   bool LoadROM(const std::string &Path);
 
+  // Utils
+  std::size_t GetRegisterIndex(const std::uint16_t Opcode) const;
+
+  std::uint8_t &GetRegisterRef(const std::uint16_t Opcode);
   // CLS
   // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#00E0
   void OP_00E0();
@@ -20,6 +24,10 @@ public:
   // LD Vx, byte
   // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#6xkk
   void OP_6XKK();
+
+  // ADD Vx, byte
+  // http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#7xkk
+  void OP_7XKK();
 
 private:
   std::array<int8_t, 4096> Memory{};
