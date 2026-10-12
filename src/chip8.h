@@ -30,14 +30,14 @@ public:
   void OP_7XKK();
 
 private:
-  std::array<int8_t, 4096> Memory{};
-  std::array<uint8_t, 64 * 32> Display{};
-  std::array<uint8_t, 16> Register{};
-  uint8_t RegI = 0;
-  uint8_t Dt = 0, St = 0;
-  uint16_t PC = 0;
-  uint8_t SP = 0;
-  std::array<uint16_t, 16> Stack{};
-  std::array<uint8_t, 16> Keypad{};
-  uint16_t OppCode = 0;
+  std::array<std::uint8_t, 4096> Memory{};
+  std::array<std::uint8_t, 64 * 32> Display{};
+  std::array<std::uint8_t, 16> Register{};
+  std::uint8_t RegI = 0;
+  std::uint8_t Dt = 0, St = 0;
+  std::uint16_t PC = 0;
+  std::uint8_t SP = 0;
+  std::array<std::uint16_t, 16> Stack{};
+  std::array<std::uint8_t, 16> Keypad{};
+  std::uint16_t OppCode = 0;
 };

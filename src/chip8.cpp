@@ -7,7 +7,7 @@
 const unsigned int START_ADDRESS = 0x200;
 const unsigned int FONTSET_SIZE = 80;
 const unsigned int FONTSET_START_ADDRESS = 0x50;
-uint8_t FontSet[FONTSET_SIZE]{
+std::uint8_t FontSet[FONTSET_SIZE]{
     0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
     0x20, 0x60, 0x20, 0x20, 0x70, // 1
     0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
@@ -29,7 +29,7 @@ uint8_t FontSet[FONTSET_SIZE]{
 Chip8::Chip8() {
   PC = START_ADDRESS;
   // Load fonts
-  for (unsigned int i = 0; i < std::size(FontSet); i++) {
+  for (std::size_t i = 0; i < std::size(FontSet); i++) {
     Memory[FONTSET_START_ADDRESS + i] = FontSet[i];
   }
 };
